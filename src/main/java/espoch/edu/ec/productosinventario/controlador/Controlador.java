@@ -24,7 +24,7 @@ public class Controlador {
         this.gestionProductosGracia = new GestionProducto();
     }
 
-    public void agregarProducto() {
+    public void agregarProductos() {
         try {
             
             String nombre = principal.getNombre();
@@ -42,24 +42,24 @@ public class Controlador {
 
             Producto objProducto = new Producto(nombre, precio, perecedero);
 
-            String msm = gestionProductosGracia.agregarProducto(objProducto);
+            String msm = gestionProductosGracia.agregarProductos(objProducto);
             principal.error(msm);
-            if (msm.equals("Ingreso exitoso")) {
+            if (msm.equals("Guardado exitosamente")) {
             principal.limpiar(); 
-            principal.error("Datos ingresados correctamente"); 
+            principal.error("Datos correctos"); 
         }
 
     } catch (NumberFormatException e) {
-        principal.error("Precio debe ser números.");
+        principal.error("Precio debe ser número.");
     } catch (Exception e) {
         principal.error("Error: " + e.getMessage());
     }
     }
 
-    public void listarProducto() {
+    public void listarProductosRegistrados() {
         try {
             String msm = "";
-            Producto[] productos = gestionProductosGracia.listarProducto();
+            Producto[] productos = gestionProductosGracia.listarProductosRegistrados();
 
             if (productos != null && productos.length > 0) { 
                 for (Producto producto : productos) {
@@ -70,11 +70,11 @@ public class Controlador {
                     }
                 }
             } else {
-                msm = "No hay datos que mostrar";
+                msm = "No hay datos para mostrar";
             }
             listarIU.mostrarDatos(msm);
         } catch (Exception e) {
-            System.out.println("Error Controlador-listarProductos: " + e);
+            System.out.println("Error Controlador-listarProductosRegistrados: " + e);
         }
     }
     

@@ -9,12 +9,12 @@ package espoch.edu.ec.productosinventario.modelo;
  * @author LAPTOP DELL
  */
 public class GestionProducto {
-    int tamanoVector = 5;
-    Producto[] productos = new Producto[tamanoVector];
+    int tamaVect = 5;
+    Producto[] productos = new Producto[tamaVect];
     int cont = 0;
 
-    public String agregarProducto(Producto producto) {
-        String msg = "Ingreso exitoso";
+    public String agregarProductos(Producto producto) {
+        String msg = "Guardado exitosamente";
         if (cont < productos.length) {
             productos[cont] = producto;
             cont++;
@@ -24,11 +24,10 @@ public class GestionProducto {
         return msg;
     }
 
-    public Producto[] listarProducto() {
+    public Producto[] listarProductosRegistrados() {
         Producto[] auxProducto = new Producto[cont];
         System.arraycopy(productos, 0, auxProducto, 0, cont);
         return auxProducto;
     }
-
     
 }
